@@ -1,33 +1,42 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import Image from "next/image";
 import coachPortrait from "@/assets/coach-portrait.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+      {/* ✅ Background image optimisée */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/gfdgfdgfd.jpg"
+          alt="Warehouse background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center blur-3xl scale-110"
+          aria-hidden="true"
+        />
+        {/* ✅ Overlay sombre pour le contraste */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
 
-      {/* Content */}
+      {/* Contenu principal */}
       <div className="container relative z-10 mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text */}
+          {/* Colonne gauche : texte */}
           <div className="text-primary-foreground">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
               Prepare for Amazon Interviews with a Former Amazon Manager
             </h1>
-            
+
             <div className="space-y-3 mb-8">
               <p className="text-xl md:text-2xl font-semibold text-accent">
                 Ex-Amazon manager. 200 interviews led. Now on your side.
               </p>
-              
+
               <div className="flex flex-wrap gap-3 text-lg text-primary-foreground/90">
                 <span>1:1 Preparation</span>
                 <span className="text-accent">•</span>
@@ -39,9 +48,10 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <Button 
-              size="lg" 
-              variant="cta" 
+            {/* Bouton Cal.com */}
+            <Button
+              size="lg"
+              variant="cta"
               className="text-lg h-14 px-8 group"
               data-cal-link="tomlouvieaux/introduction"
               data-cal-namespace="introduction"
@@ -52,11 +62,11 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Right Column - Image */}
+          {/* Colonne droite : image du coach */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-premium">
-              <img 
-                src={coachPortrait} 
+              <img
+                src="/IMG_0413-2.jpg"
                 alt="Amazon Interview Coach - Ex-Manager"
                 className="w-full h-auto"
               />
@@ -71,7 +81,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Indicateur de scroll */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/60 animate-bounce">
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm">Scroll to learn more</span>
