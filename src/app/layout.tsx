@@ -12,16 +12,15 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-eexport const metadata: Metadata = {
+export const metadata: Metadata = {
   title: {
     default: "Prepare for Amazon Interviews",
     template: "%s | Always Day One",
-  },
-  description: "Prepare for Amazon Interviews with a Former Amazon Manager
-Ex-Amazon manager. 200 interviews led. Now on your side. 1:1 Preparation, Interview Simulation, STAR Method, Direct Feedback",
+    },
+  description: "Prepare for Amazon Interviews with a Former Amazon Manager. Ex-Amazon manager. 200 interviews led. Now on your side. 1:1 Preparation, Interview Simulation, STAR Method, Direct Feedback",
   icons: {
     icon: "Always_Day_1_favicon.png", 
-  },
+      },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
