@@ -24,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={montserrat.variable}>
       <body className="font-sans bg-background text-foreground">
-      <body>
         {children}
 
         {/* Cal.com embed global (element-click + floating button) */}
