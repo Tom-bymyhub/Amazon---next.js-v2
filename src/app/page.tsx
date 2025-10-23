@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Index from '@/components/Index';
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Home page - Access and manage your content',
+  title: "Amazon Interview Coach",
+  description: "Prepare for Amazon interviews with a former Amazon manager.",
 };
 
 export default function IndexPage() {
