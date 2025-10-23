@@ -20,37 +20,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
 
-        {/* Script d'intégration Cal.com */}
+        {/* Cal.com embed global (element-click + floating button) */}
         <Script id="cal-embed" strategy="afterInteractive">
           {`
-            (function (C, A, L) { 
-              let p = function (a, ar) { a.q.push(ar); }; 
-              let d = C.document; 
-              C.Cal = C.Cal || function () { 
-                let cal = C.Cal; 
-                let ar = arguments; 
-                if (!cal.loaded) { 
-                  cal.ns = {}; 
-                  cal.q = cal.q || []; 
-                  d.head.appendChild(d.createElement("script")).src = A; 
-                  cal.loaded = true; 
-                } 
-                if (ar[0] === L) { 
-                  const api = function () { p(api, arguments); }; 
-                  const namespace = ar[1]; 
-                  api.q = api.q || []; 
-                  if(typeof namespace === "string"){ 
-                    cal.ns[namespace] = cal.ns[namespace] || api; 
-                    p(cal.ns[namespace], ar); 
-                    p(cal, ["initNamespace", namespace]); 
-                  } else p(cal, ar); 
+            (function (C, A, L) {
+              let p = function (a, ar) { a.q.push(ar); };
+              let d = C.document;
+              C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                  cal.ns = {};
+                  cal.q = cal.q || [];
+                  d.head.appendChild(d.createElement("script")).src = A;
+                  cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                  const api = function () { p(api, arguments); };
+                  const namespace = ar[1];
+                  api.q = api.q || [];
+                  if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                  } else p(cal, ar);
                   return;
-                } 
-                p(cal, ar); 
-              }; 
+                }
+                p(cal, ar);
+              };
             })(window, "https://app.cal.com/embed/embed.js", "init");
-            Cal("init", "introduction", {origin:"https://app.cal.com"});
-            Cal.ns.introduction("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+
+            // Namespace "introduction" (même que ton bouton CTA)
+            Cal("init", "introduction", { origin: "https://app.cal.com" });
+
+            // Bouton flottant (couleur et texte configurables)
+            Cal.ns.introduction("floatingButton", {
+              calLink: "tomlouvieaux/introduction",
+              config: { layout: "month_view" },
+              buttonText:"Book my call",
+              buttonColor: "#FF6600",
+              buttonTextColor: "#ffffff"
+            });
+
+            // UI par défaut (mois)
+            Cal.ns.introduction("ui", { hideEventTypeDetails: false, layout: "month_view" });
           `}
         </Script>
       </body>
