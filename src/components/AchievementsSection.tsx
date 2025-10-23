@@ -31,7 +31,7 @@ const AchievementsSection = () => {
       {/* ✅ Background Image (Next.js optimized) */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/IMG_1894.jpg" // 👉 Place l'image dans /public/warehouse-bg.jpg
+          src="/IMG_1894.JPG" // 👉 Place l'image dans /public/warehouse-bg.jpg
           alt="Amazon warehouse background"
           fill
           priority
