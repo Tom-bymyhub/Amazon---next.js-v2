@@ -5,8 +5,6 @@ import { Providers } from './providers';
 import Script from "next/script";
 import { Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] });
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
